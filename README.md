@@ -1,6 +1,6 @@
 # Graphics’ Lab weekly report:
 
-# Week1+2 Goal: Activating the drone via the PC and applying commands using Pycharm
+## Week1+2 Goal: Activating the drone via the PC and applying commands using Pycharm
 Week1:
 We started by testing out the drone and flying it around, and getting to know the drone better and how it works.
 We installed python and the necessary files inorder to start the project
