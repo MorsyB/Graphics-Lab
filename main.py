@@ -1,6 +1,6 @@
 from djitellopy import Tello
-import keyboard
 import time
+import keyboard
 
 
 def running():
