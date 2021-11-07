@@ -5,6 +5,7 @@ import tkinter as tk
 import tkinter.font as tkFont
 
 class App:
+    drone = Tello()
     def __init__(self, root):
         #setting title
         root.title("undefined")
@@ -16,7 +17,6 @@ class App:
         alignstr = '%dx%d+%d+%d' % (width, height, (screenwidth - width) / 2, (screenheight - height) / 2)
         root.geometry(alignstr)
         root.resizable(width=False, height=False)
-        drone = Tello()
 
         GButton_412=tk.Button(root)
         GButton_412["bg"] = "#efefef"
@@ -166,7 +166,7 @@ class App:
 
 
     def GButton_437_command(self):
-        self.drone.move_backward(40)
+        self.drone.move_back(40)
 
 
     def GButton_356_command(self):
