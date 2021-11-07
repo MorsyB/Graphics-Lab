@@ -192,6 +192,18 @@ class App:
     def GButton_769_command(self):
         self.drone.land()
 
+#from djitellopy import tello
+#import cv2
+
+#drone=tello.Tello()
+#drone.connect()
+#drone.streamon()
+#while True:
+ #   img=drone.get_frame_read().frame
+  #  cv2.imshow("image",img)
+   # cv2.waitKey(1)
+
+
 
 if __name__ == '__main__':
     print("Running")
