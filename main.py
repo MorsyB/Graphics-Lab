@@ -4,9 +4,8 @@ import keyboard
 import tkinter as tk
 import tkinter.font as tkFont
 import threading
-
 import cv2
-
+from Controller import PS4Controller
 
 class App:
     drone = Tello()
@@ -200,6 +199,9 @@ class App:
 
 
 if __name__ == '__main__':
+    ps4 = PS4Controller()
+    ps4.init()
+    ps4.listen()
     root = tk.Tk()
     app = App(root)
     root.mainloop()
