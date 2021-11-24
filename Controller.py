@@ -33,6 +33,8 @@ class PS4Controller(object):
             self.hat_data = {}
             for i in range(self.controller.get_numhats()):
                 self.hat_data[i] = (0, 0)
+        curr = False
+        prev = False
 
         while True:
             for event in pygame.event.get():
@@ -49,22 +51,43 @@ class PS4Controller(object):
                 # In the current setup, I have the state simply printing out to the screen.
 
                 if self.button_data[11]:
-                    self.drone.move_forward(40)
+                    self.drone.send_rc_control(0, 40, 0, 0)
+                    curr = True
+                    print(self.drone.get_battery())
+                    # self.drone.move_forward(40)
                 if self.button_data[12]:
-                    self.drone.move_back(40)
+                    self.drone.send_rc_control(0, -40, 0, 0)
+                    curr = True
+                    # self.drone.move_back(40)
                 if self.button_data[13]:
-                    self.drone.move_left(40)
+                    self.drone.send_rc_control(40, 0, 0, 0)
+                    curr = True
+                    # self.drone.move_left(40)
                 if self.button_data[14]:
-                    self.drone.move_right(40)
+                    self.drone.send_rc_control(-40, 0, 0, 0)
+                    curr = True
+                    # self.drone.move_right(40)
                 if self.button_data[3]:
-                    self.drone.move_up(40)
+                    self.drone.send_rc_control(0, 0, 40, 0)
+                    curr = True
+                    # self.drone.move_up(40)
                 if self.button_data[0]:
-                    self.drone.move_down(40)
+                    self.drone.send_rc_control(0, 0, -40, 0)
+                    curr = True
+                    # self.drone.move_down(40)
                 if self.button_data[9]:
                     self.drone.takeoff()
                 if self.button_data[10]:
                     self.drone.land()
                 if self.button_data[1]:
-                    self.drone.rotate_clockwise(30)
+                    self.drone.send_rc_control(0, 0, 0, 60)
+                    curr = True
+                    # self.drone.rotate_clockwise(30)
                 if self.button_data[2]:
-                    self.drone.rotate_counter_clockwise(30)
+                    self.drone.send_rc_control(0, 0, 0, -60)
+                    curr = True
+                    # self.drone.rotate_counter_clockwise(30)
+                if not curr and prev:
+                    self.drone.send_rc_control(0, 0, 0, 0)
+                prev = curr
+                curr = False
