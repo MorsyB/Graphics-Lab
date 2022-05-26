@@ -1,10 +1,13 @@
 import pygame
 from djitellopy import Tello
+import socket
+import time
 
 
 class PS4Controller(object):
     """Class representing the PS4 controller. Pretty straightforward functionality."""
     drone = Tello()
+    drone2 = Tello()
     controller = None
     axis_data = None
     button_data = None
@@ -13,6 +16,7 @@ class PS4Controller(object):
     def init(self):
         """Initialize the joystick components"""
         self.drone.connect()
+        self.drone2.connect()
         pygame.init()
         pygame.joystick.init()
         self.controller = pygame.joystick.Joystick(0)
@@ -48,7 +52,6 @@ class PS4Controller(object):
                     self.hat_data[event.hat] = event.value
 
                 # Insert your code on what you would like to happen for each event here!
-                # In the current setup, I have the state simply printing out to the screen.
 
                 if self.button_data[11]:
                     self.drone.send_rc_control(0, 40, 0, 0)
